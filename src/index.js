@@ -5,7 +5,7 @@ const styles = {
   fontFamily: 'sans-serif',
   textAlign: 'center',
 };
-
+//Determining if user has won or lost game by correctly figuring out order of cards
 class App extends React.Component{
   constructor(props ){
     super(props);
@@ -21,13 +21,13 @@ class App extends React.Component{
     })
   }
   render(){
-    let text = "you haven't won"
+    let text = "you haven't won yet"
     if (this.state.won){
-      text = "you win"
+      text = "you win!"
     }
     return (
-      <div class="game">
-        <Board
+      <div className="game">
+        <Board className="cards"
           order={this.state.order}
           onClick={i => this.hasWon()}
         />
@@ -38,7 +38,7 @@ class App extends React.Component{
     );
   }
 }
-
+//figuring out order of cards
 class Board extends React.Component{
   constructor(props ){
     super(props);
@@ -55,7 +55,7 @@ class Board extends React.Component{
         this.props.onClick()
       }
     } else {
-      alert("wrong")
+      alert("Wrong! This is card #"+""+i)
       this.state.cur_card = 0
     }
 
@@ -100,7 +100,7 @@ class Board extends React.Component{
     );
   }
 }
-
+//create card
 class Card extends React.Component{
   constructor(props ){
     super(props);
@@ -111,7 +111,7 @@ class Card extends React.Component{
   render(){
 
     return (
-        <button onClick={this.handleClick.bind(this)}class="card">Card</button>
+        <button onClick={this.handleClick.bind(this)}className="card">Card</button>
     );
   }
 }
